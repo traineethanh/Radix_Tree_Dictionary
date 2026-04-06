@@ -1,103 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lexicon - Radix Trie Dictionary</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Dictionary</title>
 </head>
 <body>
-
-<header>
-  <div class="logo">
-    <span class="logo-title">Lexicon</span>
-    <span class="logo-sub">Radix Trie Dictionary</span>
-  </div>
-  <div class="header-stats">
-    <div class="stat"><span class="stat-val" id="stat-words">0</span><span class="stat-lbl">WORDS</span></div>
-    <div class="stat"><span class="stat-val" id="stat-nodes">1</span><span class="stat-lbl">NODES</span></div>
-    <div class="stat"><span class="stat-val" id="stat-ops">0</span><span class="stat-lbl">OPS</span></div>
-  </div>
-</header>
-
-<div class="app">
-  <!-- Left Panel -->
-  <div class="left-panel">
-    <!-- Add word -->
-    <div class="panel-section">
-      <div class="section-title">Thêm từ mới</div>
-      <div class="input-row">
-        <input type="text" id="inp-word" placeholder="Từ tiếng Anh (vd: ephemeral)" />
-        <input type="text" id="inp-phonetic" placeholder="Phiên âm (vd: /ɪˈfem.ər.əl/)" />
-        <input type="text" id="inp-pos" placeholder="Loại từ (noun / verb / adj...)" />
-        <textarea id="inp-def" placeholder="Định nghĩa / nghĩa của từ..."></textarea>
-        <input type="text" id="inp-example" placeholder="Ví dụ câu (tùy chọn)" />
-        <div class="btn-row">
-          <button class="btn-add" onclick="addWord()">＋ Thêm</button>
-          <button class="btn-clear" onclick="clearInputs()">Xóa</button>
+    <div class="container">
+        <div class="header">
+            <h1>Dictionary</h1>
+            <p class="subtitle">Search for any word to see its definition, pronunciation, and examples</p>
         </div>
-      </div>
-    </div>
 
-    <!-- Delete & Search -->
-    <div class="panel-section">
-      <div class="section-title">Tra cứu / Xóa</div>
-      <div class="input-row">
-        <input type="text" id="inp-search" placeholder="Nhập từ cần tìm hoặc xóa..." />
-        <div class="btn-row">
-          <button class="btn-search" onclick="searchWord()">🔍 Tìm</button>
-          <button class="btn-del" onclick="deleteWord()">✕ Xóa</button>
+        <form class="search-form" id="searchForm">
+            <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search for a word..."
+                autocomplete="off"
+            >
+            <button type="submit" class="search-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </button>
+        </form>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
         </div>
-      </div>
+
+        <div id="error" class="error hidden"></div>
+
+        <div id="results" class="hidden"></div>
     </div>
-
-    <!-- Word List -->
-    <div class="wordlist-wrap">
-      <div class="wordlist-header">Danh sách từ (<span id="word-count">0</span>)</div>
-      <div id="word-list"></div>
-    </div>
-  </div>
-
-  <!-- Right Panel -->
-  <div class="right-panel">
-    <div class="tab-bar">
-      <div class="tab active" onclick="switchTab('def')">📖 Định nghĩa</div>
-      <div class="tab" onclick="switchTab('trie')">🌳 Radix Trie</div>
-      <div class="tab" onclick="switchTab('log')">📋 Nhật ký</div>
-    </div>
-    <div class="panel-content">
-      <!-- Definition -->
-      <div class="view active" id="view-def">
-        <div id="def-area" class="def-empty">
-          <div class="def-empty-icon">📚</div>
-          <div class="def-empty-text">Chọn từ để xem định nghĩa</div>
-          <div style="margin-top:8px;font-size:13px;">hoặc nhập từ và nhấn Tìm</div>
-        </div>
-      </div>
-
-      <!-- Trie -->
-      <div class="view" id="view-trie">
-        <div class="trie-view">
-          <div class="trie-title">Cấu trúc Radix Trie — Mỗi cạnh là chuỗi ký tự, node lá = từ hoàn chỉnh</div>
-          <svg id="trie-svg" width="900" height="500"></svg>
-        </div>
-      </div>
-
-      <!-- Log -->
-      <div class="view" id="view-log">
-        <div class="log-view" id="log-area">
-          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">Nhật ký thao tác</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script src="script.js"></script>
 
 </body>
 </html>
