@@ -1,56 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Dictionary</title>
+        <title>Lexicon - Radix Trie Dictionary</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
     </head>
 
     <body>
         <div class="container">
-            <div class="search-selection">
+            <div class="search-section">
                 <div class="header">
-                    <h1>Dictionary</h1>
-                    <p class="subtitle">Search for any word to see its definition, pronunciation, and examples</p>
+                    <h1>Lexicon</h1>
+                    <p class="subtitle">Radix-Trie Indexed Dictionary</p>
                 </div>
     
-                <form class="search-form" id="searchForm">
-                    <input
-                        type="text"
-                        id="searchInput"
-                        class="search-input"
-                        placeholder="Search for a word..."
-                        autocomplete="off"
-                    >
-                    <button type="submit" class="search-button">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.35-4.35"></path>
-                        </svg>
-                    </button>
+                <form class="action-form" id="searchform">
+                    <input type="text" id="searchinput" class="custom-input" placeholder="Search word..." autocomplete="off">
+                    <button type="submit" class="action-button search-btn">Search</button>
                 </form>
 
-                <div id="loading" class="loading hidden">
-                    <div class="spinner"></div>
+                <form class="action-form multi-input" id="addform">
+                    <input type="text" id="addwordinput" class="custom-input" placeholder="New word..." required>
+                    <input type="text" id="addmeaninginput" class="custom-input" placeholder="Meaning..." required>
+                    <button type="submit" class="action-button add-btn">Add</button>
+                </form>
+
+                <form class="action-form" id="delform">
+                    <input type="text" id="delwordinput" class="custom-input" placeholder="Word to delete..." required>
+                    <button type="submit" class="action-button del-btn">Delete</button>
+                </form>
+
+                <div class="data-controls" style="display: flex; gap: 0.5rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed #ddd6fe;">
+                    <button id="export-btn" class="action-button" style="flex: 1; background: linear-gradient(to right, #3b82f6, #2563eb);">Export .json</button>
+                    <button id="import-btn" class="action-button" style="flex: 1; background: linear-gradient(to right, #f59e0b, #d97706);">Import .json</button>
+                    <input type="file" id="file-input" accept=".json" class="hidden">
                 </div>
-    
-                <div id="error" class="error hidden"></div>
-    
+
                 <div id="results" class="hidden"></div>
             </div>
             
-            <div class="visualizer-section">
-                <h3>Radix Trie Structure</h3>
-                <div id="trie-visualizer" class="trie-container">
-                    <!-- Các node của cây sẽ được render vào đây bằng JS -->
-                    <div class="trie-node root">root</div>
+            <div class="trie-section">
+                <div class="trie-card">
+                    <div class="trie-header">
+                        <h3>Radix Trie Structure</h3>
+                        <span class="status-badge">Live Visualization</span>
+                    </div>
+                    <div id="trie-visualizer" class="trie-container">
+                        </div>
                 </div>
-                
-                <div id="results" class="hidden"></div>
             </div>
         </div>
 
-        <script src="js/script.js"></script>
+        <script src="./assets/js/script.js"></script>
     </body>
 </html>
