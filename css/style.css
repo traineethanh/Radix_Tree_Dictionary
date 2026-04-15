@@ -160,9 +160,10 @@ h1 {
 .trie-container {
     flex-grow: 1;
     overflow: auto; /* Tự động xuất hiện thanh cuộn ngang/dọc khi cây lớn */
-    padding: 60px;
+    padding: 50px;
     position: relative;
     display: block;
+    min-height: 500px;
     justify-content: center; /* Căn giữa khi cây nhỏ */
     align-items: flex-start; /* Giữ cây bám trên cùng */
 }
@@ -194,6 +195,7 @@ h1 {
     padding-top: 80px; /* Khoảng cách để vẽ đường chéo */
     position: relative;
     width: max-content;
+    align-items: flex-start;
     margin: 0 auto;
 }
 
@@ -203,7 +205,7 @@ h1 {
     align-items: center;
     position: relative;
     padding: 0 20px;
-    flex-shrink: 0;
+    flex: 0 0 auto;
 }
 
 /* NHÃN TRÊN CẠNH */
