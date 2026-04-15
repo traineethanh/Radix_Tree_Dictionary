@@ -176,9 +176,14 @@ class radixtrie {
         const svg = document.getElementById('trie-svg');
         const canvas = document.getElementById('trie-canvas');
         if (!svg || !canvas) return;
+        
+        const fullWidth = canvas.scrollWidth;
+        const fullHeight = canvas.scrollHeight;
 
         svg.setAttribute('width', canvas.scrollWidth);
         svg.setAttribute('height', canvas.scrollHeight);
+        svg.style.width = fullWidth + "px";
+        svg.style.height = fullHeight + "px";
         svg.innerHTML = ''; 
         
         const drawLine = (parentNode) => {

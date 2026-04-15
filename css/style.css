@@ -160,9 +160,9 @@ h1 {
 .trie-container {
     flex-grow: 1;
     overflow: auto; /* Tự động xuất hiện thanh cuộn ngang/dọc khi cây lớn */
-    padding: 40px;
+    padding: 60px;
     position: relative;
-    display: flex;
+    display: block;
     justify-content: center; /* Căn giữa khi cây nhỏ */
     align-items: flex-start; /* Giữ cây bám trên cùng */
 }
@@ -170,9 +170,9 @@ h1 {
 /* KHUNG CHỨA HTML & SVG */
 #trie-canvas {
     position: relative;
-    display: flex;
+    display: inline-block;
     justify-content: center;
-    min-width: max-content;
+    min-width: 100%;
     padding: 20px 40px;
 }
 
@@ -191,8 +191,10 @@ h1 {
     display: flex;
     flex-wrap: nowrap; /* Bắt buộc không xuống dòng để cây mở rộng ngang */
     justify-content: center;
-    padding-top: 60px; /* Khoảng cách để vẽ đường chéo */
+    padding-top: 80px; /* Khoảng cách để vẽ đường chéo */
     position: relative;
+    width: max-content;
+    margin: 0 auto;
 }
 
 .tree-node-wrapper {
@@ -200,7 +202,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     position: relative;
-    padding: 0 15px;
+    padding: 0 20px;
     flex-shrink: 0;
 }
 
