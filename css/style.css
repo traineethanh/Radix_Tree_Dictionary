@@ -172,6 +172,8 @@ h1 {
     position: relative;
     display: flex;
     justify-content: center;
+    min-width: max-content;
+    padding: 20px 40px;
 }
 
 #trie-svg {
@@ -198,7 +200,8 @@ h1 {
     flex-direction: column;
     align-items: center;
     position: relative;
-    padding: 0 15px; /* Khoảng cách ngang giữa các node */
+    padding: 0 15px;
+    flex-shrink: 0;
 }
 
 /* NHÃN TRÊN CẠNH */
