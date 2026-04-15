@@ -220,6 +220,26 @@ class radixtrie {
         
         drawLine(this.root);
     }
+
+    focusNode(nodeId) {
+        const nodeEl = document.getElementById(nodeId);
+        if (!nodeEl) return;
+    
+        // 1. Cuộn mượt mà đến node đó
+        nodeEl.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center'
+        });
+    
+        // 2. Thêm hiệu ứng Highlight
+        nodeEl.classList.add('highlight-focus');
+        
+        // Xóa class sau 2 giây để có thể thực hiện lại lần sau
+        setTimeout(() => {
+            nodeEl.classList.remove('highlight-focus');
+        }, 2000);
+    }
 }
 
 // ==========================================
@@ -283,6 +303,7 @@ searchform.addEventListener('submit', (e) => {
                 <p class="definition-text">${result.meaning}</p>
             </div>
         </div>`;
+        mytrie.focusNode(result.id);
     } else {
         resultsel.innerHTML = `<div class="error">The word "${word}" does not exist in the index.</div>`;
     }
@@ -306,6 +327,10 @@ addform.addEventListener('submit', (e) => {
         
         addwordinput.value = '';
         addmeaninginput.value = '';
+    }
+    const newNode = mytrie.search(word);
+    if (newNode) {
+        setTimeout(() => mytrie.focusNode(newNode.id), 100); // Đợi render xong rồi focus
     }
 });
 
